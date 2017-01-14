@@ -17,21 +17,24 @@ public class OI {
 	// number it is.
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
-	public Joystick stick = new Joystick(1);
-	public Button a = new JoystickButton(stick, 1);
-	public Button b = new JoystickButton(stick, 2);
-	public Button c = new JoystickButton(stick, 3);
-	public Button d = new JoystickButton(stick, 4);
-	public Button lb = new JoystickButton(stick, 5);
-	public Button rb = new JoystickButton(stick, 6);
-	public Button lt = new JoystickButton(stick, 7);
-	public Button rt = new JoystickButton(stick, 8);
-	public Button back = new JoystickButton(stick, 9);
-	public Button start = new JoystickButton(stick, 10);
-	public Button pad_left = new JoystickButton(stick, 11);
-	public Button pad_right = new JoystickButton(stick, 12);
-	public Button pad_up = new JoystickButton(stick, 13);
-	public Button pad_down = new JoystickButton(stick, 14);
+	Joystick stick = new Joystick(1);
+	Button a = new JoystickButton(stick, 1);
+	Button b = new JoystickButton(stick, 2);
+	Button x = new JoystickButton(stick, 3);
+	Button y = new JoystickButton(stick, 4);
+	Button lb = new JoystickButton(stick, 5);
+	Button rb = new JoystickButton(stick, 6);
+	Button back = new JoystickButton(stick, 7);
+	Button start = new JoystickButton(stick, 8);
+	Button l3 = new JoystickButton(stick, 9);
+	Button r3 = new JoystickButton(stick, 10);
+	double lX = stick.getRawAxis(0);
+	double lY = stick.getRawAxis(1);
+	double lTrigger = stick.getRawAxis(2);
+	double rTrigger = stick.getRawAxis(3);
+	double rX = stick.getRawAxis(4);
+	double rY = stick.getRawAxis(5);
+	int d_pad = stick.getPOV();
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
 	// commands the same as any other Button.
