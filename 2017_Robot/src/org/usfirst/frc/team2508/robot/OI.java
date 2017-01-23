@@ -1,9 +1,11 @@
 package org.usfirst.frc.team2508.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import org.usfirst.frc.team2508.robot.commands.ExampleCommand;
+import org.usfirst.frc.team2508.robot.commands.*;
+import org.usfirst.frc.team2508.robot.subsystems.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -17,7 +19,15 @@ public class OI {
 	// number it is.
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
-	Joystick stick = new Joystick(1);
+	Joystick stick = new Joystick(0);
+	// upper left Talon
+	public Talon lu = new Talon(0);
+	// lower left Talon
+	public Talon ll = new Talon(1);
+	// upper right Talon
+	public Talon ru = new Talon(2);
+	// lower right Talon
+	public Talon rl = new Talon(3);
 	Button a = new JoystickButton(stick, 1);
 	Button b = new JoystickButton(stick, 2);
 	Button x = new JoystickButton(stick, 3);
@@ -35,6 +45,12 @@ public class OI {
 	double rX = stick.getRawAxis(4);
 	double rY = stick.getRawAxis(5);
 	int d_pad = stick.getPOV();
+	public OI(){
+		if (rY != 0 || lY != 0){
+			DriveSystem.drive(lY, rY);
+		}
+		
+	}
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
 	// commands the same as any other Button.
