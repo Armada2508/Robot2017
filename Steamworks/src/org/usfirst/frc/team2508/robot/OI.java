@@ -5,7 +5,8 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team2508.robot.commands.*;
-import org.usfirst.frc.team2508.robot.subsystems.*;
+//import org.usfirst.frc.team2508.robot.subsystems.*;
+import org.usfirst.frc.team2508.robot.subsystems.DriveSystem;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -28,9 +29,11 @@ public class OI{
 	public Talon ru = new Talon(2);
 	// lower right Talon
 	public Talon rl = new Talon(3);
+	// Talon for the Ball picker upper thing
+	public Talon ballRunner = new Talon(4);
 	Button a = new JoystickButton(stick, 1);
 	Button b = new JoystickButton(stick, 2);
-	Button x = new JoystickButton(stick, 3);
+	public Button x = new JoystickButton(stick, 3);
 	Button y = new JoystickButton(stick, 4);
 	Button lb = new JoystickButton(stick, 5);
 	Button rb = new JoystickButton(stick, 6);
@@ -47,6 +50,7 @@ public class OI{
 	int d_pad = stick.getPOV();
 	public OI(){
 			l3.toggleWhenPressed(new DriveRobot());
+			x.toggleWhenPressed(new GearOC());
 	}
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to

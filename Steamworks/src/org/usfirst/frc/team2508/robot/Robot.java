@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team2508.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -8,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team2508.robot.commands.DriveRobot;
 import org.usfirst.frc.team2508.robot.commands.ExampleCommand;
 import org.usfirst.frc.team2508.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team2508.robot.subsystems.ExampleSubsystem;
@@ -23,6 +25,8 @@ public class Robot extends IterativeRobot {
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveSystem driveSystem = new DriveSystem();
 	public static OI oi;
+	
+	Compressor mainCompressor = new Compressor(0);
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -37,7 +41,7 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
-		
+    	mainCompressor.setClosedLoopControl(true);
 		oi.a.cancelWhenPressed(new ExampleCommand());
 	}
 
