@@ -3,7 +3,6 @@ package org.usfirst.frc.team2508.robot.commands;
 import org.usfirst.frc.team2508.robot.Robot;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**

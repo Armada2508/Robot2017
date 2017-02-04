@@ -3,12 +3,14 @@ package org.usfirst.frc.team2508.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team2508.robot.Robot;
-//import org.usfirst.frc.team2508.robot.subsystems.DriveSystem; (Not Needed)
+
 /**
  *
  */
 public class DriveRobot extends Command {
-
+	
+	public int count = 1;
+	
     public DriveRobot() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -20,9 +22,36 @@ public class DriveRobot extends Command {
     	
     }
 
+
     // Called repeatedly when this Command is scheduled to run
+	
     protected void execute() {
-    	Robot.driveSystem.drive(Robot.oi.stick.getRawAxis(1), Robot.oi.stick.getRawAxis(5));
+    	
+    	switch (count){
+    	case 0:
+        	Robot.driveSystem.drive(Robot.oi.stick.getRawAxis(5), Robot.oi.stick.getRawAxis(1));
+    		break;
+    	case 1:
+    		double RCalc, LCalc;
+    		RCalc = Robot.oi.stick.getRawAxis(1)*2;
+    		LCalc = Robot.oi.stick.getRawAxis(1)*2;
+    		RCalc -= Robot.oi.stick.getRawAxis(0);
+    		LCalc += Robot.oi.stick.getRawAxis(0);
+    		Robot.driveSystem.drive(LCalc, RCalc);
+    		break;
+    	case 2:
+    		double RCalc1, LCalc1;
+    		RCalc1 = Robot.oi.stick.getRawAxis(1);
+    		LCalc1 = Robot.oi.stick.getRawAxis(1);
+    		RCalc1 -= Robot.oi.stick.getRawAxis(4);
+    		LCalc1 += Robot.oi.stick.getRawAxis(4);
+    		Robot.driveSystem.drive(LCalc1,RCalc1);
+    		break;
+    	default:
+        	Robot.driveSystem.drive(Robot.oi.stick.getRawAxis(5), Robot.oi.stick.getRawAxis(1));
+        	break;
+    	
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
